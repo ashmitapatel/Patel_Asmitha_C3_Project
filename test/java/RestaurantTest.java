@@ -22,7 +22,11 @@ class RestaurantTest {
     @Test
     public void is_restaurant_open_should_return_true_if_time_is_between_opening_and_closing_time(){
         //WRITE UNIT TEST CASE HERE
-        assertTrue(restaurant.isRestaurantOpen());
+        Restaurant spyRestaurant =Mockito.spy(restaurant);
+        LocalTime mockedCurrentTime=LocalTime.parse("19:30:00");
+        Mockito.when(spyRestaurant.getCurrentTime()).thenReturn(openTime);
+        System.out.println(spyRestaurant.isRestaurantOpen());
+        assertTrue(spyRestaurant.isRestaurantOpen());
 
     }
 
@@ -30,7 +34,11 @@ class RestaurantTest {
     public void is_restaurant_open_should_return_false_if_time_is_outside_opening_and_closing_time(){
         //WRITE UNIT TEST CASE HERE
 
-        assertFalse(restaurant.isRestaurantOpen());
+        Restaurant spyRestaurant =Mockito.spy(restaurant);
+        LocalTime mockedCurrentTime=LocalTime.parse("00:00:00");
+        Mockito.when(spyRestaurant.getCurrentTime()).thenReturn(openTime);
+        System.out.println(spyRestaurant.isRestaurantOpen());
+        assertFalse(spyRestaurant.isRestaurantOpen());
     }
 
     //<<<<<<<<<<<<<<<<<<<<<<<<<OPEN/CLOSED>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
