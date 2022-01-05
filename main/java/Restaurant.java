@@ -70,6 +70,12 @@ public class Restaurant {
         return name;
     }
 
-    
+    public void returnTotalCost_returns_the_expected_Bill_amount()
+    {
+
+        int returnedBillAmount = restaurant.returnTotalBillAmount("Vegetable lasagne","Sweet corn soup");
+        //expectedBillAmount = 269 + 119 = 388
+        assertEquals(388, returnedBillAmount);
+    }
 
 }
